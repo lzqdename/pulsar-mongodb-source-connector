@@ -56,12 +56,11 @@ TODO
 
 please execute commands as follows to build the nar file
 
-    git clone https://github.com/streamnative/pulsar-io-mongodb.git
-    cd pulsar-io-mongodb
-    git checkout -b feature-full-version-mongodb-source origin/feature-full-version-mongodb-source
+    git clone https://github.com/lzqdename/pulsar-mongodb-source-connector.git
+    cd pulsar-mongodb-source-connector
     mvn clean package -Dmaven.test.skip=true
 
-then , you can find the nar file at pulsar-io-mongodb/target/pulsar-io-mongo-[the version].nar
+then , you can find the nar file at pulsar-mongodb-source-connector/target/pulsar-io-mongo-[the version].nar
 
 ## How to run source
 
