@@ -226,7 +226,12 @@ then , you can find the nar file at pulsar-mongodb-source-connector/target/pulsa
     ----- got message -----
     key:[], properties:[], content:{"clusterTime":7068899124149485570,"operation":"dropDatabase"}
     ```  
-       
+   
+   invalidate
+   
+    ```bash
+    TODO
+    ```    
  
    
 all done , enjoy !
