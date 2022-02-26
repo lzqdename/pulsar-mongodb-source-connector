@@ -487,7 +487,7 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 
 					// if .tryNext() return null,may be cursor has been closed by the server
 					Preconditions.checkArgument(null != cursor.getServerCursor(),
-							"The cursor has been closed by the server when handle runStream() ");
+							"The cursor has been closed by the server when handle runStream() , we will restart all system , do not worry ");
 
 					// whether to create heartbeat record
 					long currentMs = System.currentTimeMillis();
