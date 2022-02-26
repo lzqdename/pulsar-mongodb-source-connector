@@ -198,6 +198,21 @@ then , you can find the nar file at pulsar-mongodb-source-connector/target/pulsa
     key:[{"_id": {"$oid": "6219bb2efd2cdc8aa3ac8792"}}], properties:[], content:{"clusterTime":7068886947917201409,"fullDocument":"{\"_id\": {\"$oid\": \"6219bb2efd2cdc8aa3ac8792\"}, \"text\": \"123\", \"title\": \"456\"}","ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"update"}
     ```
     
+   replace
+   
+    ```bash
+    
+    db.mytable.find({
+    _id:ObjectId("6219c8d8fd2cdc8aa3ac8793")
+    }).forEach(function(item){
+    item.aaa=1;
+    db.mytable.save(item);
+    });
+    
+    ----- got message -----
+    key:[{"_id": {"$oid": "6219c8d8fd2cdc8aa3ac8793"}}], properties:[], content:{"clusterTime":7068903457771487233,"fullDocument":"{\"_id\": {\"$oid\": \"6219c8d8fd2cdc8aa3ac8793\"}, \"text\": 1.0, \"aaa\": 1.0}","ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"replace"}
+    ``` 
+    
    delete
    
     ```bash
