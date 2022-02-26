@@ -586,9 +586,9 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 		mongoSourceConfig.validate(false, false);
 
 		// prepare global queues
-		super.setDataQueue(new LinkedBlockingQueue(mongoSourceConfig.getGlobalQueueSize()));
+		super.setDataQueue(new LinkedBlockingQueue<Record<byte[]>>(mongoSourceConfig.getGlobalQueueSize()));
 		// then prepare offset queue
-		super.setOffsetQueue(new LinkedBlockingQueue(2 * mongoSourceConfig.getGlobalQueueSize()));
+		super.setOffsetQueue(new LinkedBlockingQueue<Record<byte[]>>(2 * mongoSourceConfig.getGlobalQueueSize()));
 
 		// init current objects
 		initialize(sourceContext);
@@ -620,7 +620,7 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 	}
 
 	@Override
-	public Record read() throws Exception {
+	public Record<byte[]> read() throws Exception {
 
 		while (true) {
 
@@ -630,7 +630,7 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 			// then there is a chance to let close function invoked !
 			checkException();
 
-			Record record = super.readData(5);
+			Record<byte[]> record = super.readData(5);
 			if (null == record) {
 				continue;
 			}
