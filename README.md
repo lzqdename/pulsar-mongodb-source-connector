@@ -204,6 +204,13 @@ then , you can find the nar file at pulsar-mongodb-source-connector/target/pulsa
     ----- got message -----
     key:[{"_id": {"$oid": "620fc75879d0dfe57de5e4c9"}}], properties:[], content:{"clusterTime":7068895902924013569,"ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"delete"}
     ``` 
+    
+   drop
+    
+    ```bash
+    ----- got message -----
+    key:[], properties:[], content:{"clusterTime":7068897174234333185,"ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"drop"}
+    ``` 
        
    rename
 
