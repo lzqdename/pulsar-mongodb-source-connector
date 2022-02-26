@@ -205,8 +205,11 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 		if (null != stateBuf) {
 			byte[] stateArray = stateBuf.array();
 			if (null != stateArray && stateArray.length > 0) {
-				resumeToken = BsonDocument.parse(new String(stateArray));
-				Preconditions.checkArgument(null != resumeToken, "invalid resume token from remote state store");
+				//
+				MongoSourceState state = gson.fromJson(new String(stateArray), MongoSourceState.class);
+				Preconditions.checkArgument(null != state.getResumeToken(),
+						"invalid resume token from remote state store");
+				resumeToken = BsonDocument.parse(state.getResumeToken());
 				log.info("succeed to recover resume token from remote state store as {}", resumeToken);
 			}
 		}
@@ -565,8 +568,15 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 					&& false == savedResumeToken.equals(newestResumeToken));
 
 			if (shouldUpdate || shouldUpdate0) {
+
 				savedResumeToken = newestResumeToken;
-				this.defaultStateStore.put(STATE_KEY, ByteBuffer.wrap(savedResumeToken.getBytes()));
+
+				// save
+				MongoSourceState state = new MongoSourceState();
+				state.setResumeToken(savedResumeToken);
+
+				defaultStateStore.put(STATE_KEY, ByteBuffer.wrap(gson.toJson(state).getBytes()));
+
 				log.info("succeed to store resume token {}", savedResumeToken);
 			}
 
