@@ -20,5 +20,5 @@ name: mongo
 description: MongoDB source and sink connector
 sourceClass: org.apache.pulsar.io.mongodb.source.MongoSource
 sourceConfigClass: org.apache.pulsar.io.mongodb.source.MongoSourceConfig
-sinkClass: org.apache.pulsar.io.mongodb.MongoSink
-sinkConfigClass: org.apache.pulsar.io.mongodb.MongoConfig
+sinkClass: org.apache.pulsar.io.mongodb.sink.MongoSink
+sinkConfigClass: org.apache.pulsar.io.mongodb.sink.MongoConfig

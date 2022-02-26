@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.pulsar.io.mongodb;
+package org.apache.pulsar.io.mongodb.sink;
 
 import static java.util.stream.Collectors.toList;
 import com.google.common.collect.Lists;

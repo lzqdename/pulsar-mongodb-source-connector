@@ -26,6 +26,7 @@ import com.mongodb.reactivestreams.client.MongoCollection;
 import com.mongodb.reactivestreams.client.MongoDatabase;
 import org.apache.pulsar.functions.api.Record;
 import org.apache.pulsar.io.core.SinkContext;
+import org.apache.pulsar.io.mongodb.sink.MongoSink;
 import org.bson.BsonDocument;
 import org.mockito.Mock;
 import org.reactivestreams.Publisher;

@@ -19,6 +19,7 @@
 
 package org.apache.pulsar.io.mongodb;
 
+import org.apache.pulsar.io.mongodb.sink.MongoConfig;
 import org.testng.annotations.Test;
 
 import java.io.File;
