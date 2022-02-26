@@ -204,6 +204,14 @@ then , you can find the nar file at pulsar-mongodb-source-connector/target/pulsa
     ----- got message -----
     key:[{"_id": {"$oid": "620fc75879d0dfe57de5e4c9"}}], properties:[], content:{"clusterTime":7068895902924013569,"ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"delete"}
     ``` 
+  
+   rename
+
+    ```bash
+    ----- got message -----
+    key:[], properties:[], content:{"clusterTime":7068888300831899649,"destNamespace":{"databaseName":"test","collectionName":"orders2022","fullName":"test.orders2022"},"ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"rename"}
+
+    ``` 
     
    drop
     
@@ -219,13 +227,7 @@ then , you can find the nar file at pulsar-mongodb-source-connector/target/pulsa
     key:[], properties:[], content:{"clusterTime":7068899124149485570,"operation":"dropDatabase"}
     ```  
        
-   rename
-
-    ```bash
-    ----- got message -----
-    key:[], properties:[], content:{"clusterTime":7068888300831899649,"destNamespace":{"databaseName":"test","collectionName":"orders2022","fullName":"test.orders2022"},"ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"rename"}
-
-    ```  
+ 
    
 all done , enjoy !
 
