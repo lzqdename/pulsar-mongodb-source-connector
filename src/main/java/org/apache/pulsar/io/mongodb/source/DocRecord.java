@@ -22,9 +22,9 @@ public class DocRecord implements Record<byte[]> {
 	private final byte[] value;
 	private final BsonDocument resumeToken;
 	private final RecordSource source;
-	private final OperationType resumeTokenType;
+	private final String resumeTokenType;
 
-	public DocRecord(Optional<String> k, byte[] v, BsonDocument t, RecordSource s, OperationType type) {
+	public DocRecord(Optional<String> k, byte[] v, BsonDocument t, RecordSource s, String type) {
 		key = k;
 		value = v;
 		resumeToken = t;
