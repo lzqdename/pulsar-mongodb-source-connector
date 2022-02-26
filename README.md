@@ -180,7 +180,7 @@ then , you can find the nar file at pulsar-mongodb-source-connector/target/pulsa
    
     ```bash
     ----- got message -----
-    key:[{"_id": {"$oid": "62125331773e04660e465388"}}], properties:[], content:{"fullDocument":"{\"_id\": {\"$oid\": \"62125331773e04660e465388\"}, \"text\": \"hello world\"}","ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"insert"}
+    key:[{"_id": {"$oid": "6219b897fd2cdc8aa3ac8791"}}], properties:[], content:{"clusterTime":7068884048814276609,"fullDocument":"{\"_id\": {\"$oid\": \"6219b897fd2cdc8aa3ac8791\"}, \"text\": \"insert\"}","ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"insert"}
     ```
     
 all done , enjoy !
