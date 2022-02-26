@@ -176,6 +176,8 @@ then , you can find the nar file at pulsar-mongodb-source-connector/target/pulsa
 
    for example
 
+   insert
+   
     ```bash
     ----- got message -----
     key:[{"_id": {"$oid": "62125331773e04660e465388"}}], properties:[], content:{"fullDocument":"{\"_id\": {\"$oid\": \"62125331773e04660e465388\"}, \"text\": \"hello world\"}","ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"insert"}
