@@ -405,7 +405,10 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 			throws JsonProcessingException {
 
 		// Build a record with the essential information
-		String key = document.getDocumentKey().toJson();
+		String key = null;
+		if (null != document.getDocumentKey()) {
+			key = document.getDocumentKey().toJson();
+		}
 
 		// value
 		final Map<String, Object> recordValue = new HashMap<>();
