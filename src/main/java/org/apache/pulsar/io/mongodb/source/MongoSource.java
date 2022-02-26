@@ -180,15 +180,17 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 			final ChangeStreamIterable<Document> changeStream, final BsonDocument resumeToken) {
 
 		// use startAfter vs resumeAfter
+		// https://docs.mongodb.com/manual/reference/change-events/#invalidate-event
 		if (null != resumeToken) {
-			try {
-				changeStream.startAfter(resumeToken);
-				log.info("succeed to use changeStream.startAfter(resumeToken)");
-			} catch (Exception e) {
-				log.warn("fail to use startAfter... , so we will try to use resumeAfter... ");
-				changeStream.resumeAfter(resumeToken);
-				log.info("succeed to use changeStream.resumeAfter(resumeToken)");
-			}
+			// try {
+			changeStream.startAfter(resumeToken);
+			log.info("succeed to use changeStream.startAfter(resumeToken)");
+			// } catch (Exception e) {
+			// log.warn("fail to use startAfter... , so we will try to use resumeAfter...
+			// ");
+			// changeStream.resumeAfter(resumeToken);
+			// log.info("succeed to use changeStream.resumeAfter(resumeToken)");
+			// }
 		}
 
 		return changeStream.cursor();
