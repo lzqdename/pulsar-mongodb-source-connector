@@ -412,7 +412,9 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 
 		// value
 		final Map<String, Object> recordValue = new HashMap<>();
-		recordValue.put("fullDocument", document.getFullDocument().toJson());
+		if (null != document.getFullDocument()) {
+			recordValue.put("fullDocument", document.getFullDocument().toJson());
+		}
 		recordValue.put("ns", document.getNamespace());
 		recordValue.put("clusterTime", document.getClusterTime().getValue());
 		recordValue.put("operation", document.getOperationType().getValue());
