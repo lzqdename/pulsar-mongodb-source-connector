@@ -170,7 +170,7 @@ then , you can find the nar file at pulsar-mongodb-source-connector/target/pulsa
     /root/pulsar/pulsar-2.9.1-bin/bin/pulsar-client consume mongo-source-topic-test -s "first-subscription" -n 0
     ```
 
-5) insert mongo document see 1)
+5) handle mongo document see 1)
 
 6) observe the shell output of 4)
 
@@ -197,6 +197,13 @@ then , you can find the nar file at pulsar-mongodb-source-connector/target/pulsa
     ----- got message -----
     key:[{"_id": {"$oid": "6219bb2efd2cdc8aa3ac8792"}}], properties:[], content:{"clusterTime":7068886947917201409,"fullDocument":"{\"_id\": {\"$oid\": \"6219bb2efd2cdc8aa3ac8792\"}, \"text\": \"123\", \"title\": \"456\"}","ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"update"}
     ```
+    
+   delete
+   
+    ```bash
+    ----- got message -----
+    key:[{"_id": {"$oid": "620fc75879d0dfe57de5e4c9"}}], properties:[], content:{"clusterTime":7068895902924013569,"ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"delete"}
+    ``` 
        
    rename
 
