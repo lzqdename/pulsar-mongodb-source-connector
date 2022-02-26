@@ -223,7 +223,8 @@ then , you can find the nar file at pulsar-mongodb-source-connector/target/pulsa
    invalidate
    
     ```bash
-    TODO
+    ----- got message -----
+    key:[], properties:[], content:{"clusterTime":7068919778647212034,"operation":"invalidate"}
     ``` 
     
    drop
