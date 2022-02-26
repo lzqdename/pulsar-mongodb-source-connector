@@ -417,6 +417,11 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 		recordValue.put("clusterTime", document.getClusterTime().getValue());
 		recordValue.put("operation", document.getOperationType().getValue());
 
+		// extra
+		MongoNamespace destinationNamespace = document.getDestinationNamespace();
+		if (null != destinationNamespace) {
+			recordValue.put("destNamespace", destinationNamespace);
+		}
 		byte[] value = this.gson.toJson(recordValue).getBytes(StandardCharsets.UTF_8);
 
 		// create record
