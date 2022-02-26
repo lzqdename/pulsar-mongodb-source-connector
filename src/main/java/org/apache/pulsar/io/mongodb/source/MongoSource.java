@@ -401,8 +401,12 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 
 	}
 
-	private DocRecord changeStreamDocumentToDocRecord(ChangeStreamDocument<Document> document)
-			throws JsonProcessingException {
+	private DocRecord changeStreamDocumentToDocRecord(ChangeStreamDocument<Document> document) throws Exception {
+
+		if (null != document.getOperationType()
+				&& OperationType.OTHER.getValue().equals(document.getOperationType().getValue())) {
+			throw new Exception("please update the driver to get the actual operation type ");
+		}
 
 		// Build a record with the essential information
 		String key = "";
