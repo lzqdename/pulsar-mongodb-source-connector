@@ -371,7 +371,7 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 							byte[] value = MongoSource.this.gson.toJson(recordValue).getBytes(StandardCharsets.UTF_8);
 
 							// create DocRecord
-							DocRecord docRecord = new DocRecord(Optional.of(key), value, null, RecordSource.COPY);
+							DocRecord docRecord = new DocRecord(Optional.of(key), value, null, RecordSource.COPY, null);
 
 							// put into queue
 							MongoSource.this.consumeData(docRecord);
@@ -430,7 +430,8 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 		byte[] value = this.gson.toJson(recordValue).getBytes(StandardCharsets.UTF_8);
 
 		// create record
-		DocRecord record = new DocRecord(Optional.of(key), value, document.getResumeToken(), RecordSource.STREAM);
+		DocRecord record = new DocRecord(Optional.of(key), value, document.getResumeToken(), RecordSource.STREAM,
+				document.getOperationType().getValue());
 		return record;
 
 	}
@@ -494,7 +495,8 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 						lastCheckHeartbeat = currentMs;
 
 						// create heartbeat record
-						DocRecord record = new DocRecord(null, null, cursor.getResumeToken(), RecordSource.HEARTBEAT);
+						DocRecord record = new DocRecord(null, null, cursor.getResumeToken(), RecordSource.HEARTBEAT,
+								"heartbeat");
 						consumeData(record);
 						log.info("create a heartbeat record  {}", record.getResumeToken());
 
