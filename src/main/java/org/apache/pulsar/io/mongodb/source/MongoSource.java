@@ -68,6 +68,7 @@ import org.apache.pulsar.io.core.annotations.IOType;
 import org.apache.pulsar.io.mongodb.Utils;
 import org.apache.pulsar.io.mongodb.source.MongoPushSource;
 import org.bson.BsonDocument;
+import org.bson.BsonTimestamp;
 import org.bson.Document;
 import org.bson.RawBsonDocument;
 
@@ -362,7 +363,12 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 							final Map<String, Object> recordValue = new HashMap<>();
 							recordValue.put("fullDocument", doc.toJson());
 							recordValue.put("ns", namespace);
-							recordValue.put("operation", OperationType.OTHER.getValue());
+							long ms = System.currentTimeMillis();
+							int seconds = (int) (ms / 1000);
+							int incr = (int) (ms % 1000);
+							recordValue.put("clusterTime", new BsonTimestamp(seconds, incr).getValue());
+							recordValue.put("operation", "copy");
+
 							byte[] value = MongoSource.this.gson.toJson(recordValue).getBytes(StandardCharsets.UTF_8);
 
 							// create DocRecord
@@ -405,6 +411,7 @@ public class MongoSource extends MongoPushSource<byte[]> implements Runnable {
 		final Map<String, Object> recordValue = new HashMap<>();
 		recordValue.put("fullDocument", document.getFullDocument().toJson());
 		recordValue.put("ns", document.getNamespace());
+		recordValue.put("clusterTime", document.getClusterTime().getValue());
 		recordValue.put("operation", document.getOperationType().getValue());
 
 		byte[] value = this.gson.toJson(recordValue).getBytes(StandardCharsets.UTF_8);
