@@ -6,6 +6,8 @@ import org.apache.pulsar.functions.api.Record;
 import org.apache.pulsar.io.mongodb.source.RecordSource;
 import org.bson.BsonDocument;
 
+import com.mongodb.client.model.changestream.OperationType;
+
 import lombok.Data;
 
 @Data
@@ -20,12 +22,14 @@ public class DocRecord implements Record<byte[]> {
 	private final byte[] value;
 	private final BsonDocument resumeToken;
 	private final RecordSource source;
+	private final OperationType resumeTokenType;
 
-	public DocRecord(Optional<String> k, byte[] v, BsonDocument t, RecordSource s) {
+	public DocRecord(Optional<String> k, byte[] v, BsonDocument t, RecordSource s, OperationType type) {
 		key = k;
 		value = v;
 		resumeToken = t;
 		source = s;
+		resumeTokenType = type;
 	}
 
 	@Override
