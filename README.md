@@ -191,6 +191,13 @@ then , you can find the nar file at pulsar-mongodb-source-connector/target/pulsa
     key:[{"_id": {"$oid": "6219b897fd2cdc8aa3ac8791"}}], properties:[], content:{"clusterTime":7068884048814276609,"fullDocument":"{\"_id\": {\"$oid\": \"6219b897fd2cdc8aa3ac8791\"}, \"text\": \"insert\"}","ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"insert"}
     ```
     
+   update
+    
+    ```bash
+    ----- got message -----
+    key:[{"_id": {"$oid": "6219b87ffd2cdc8aa3ac8790"}}], properties:[], content:{"clusterTime":7068885131146035201,"fullDocument":"{\"_id\": {\"$oid\": \"6219b87ffd2cdc8aa3ac8790\"}, \"text\": \"insert\", \"title\": \"update\"}","ns":{"databaseName":"test","collectionName":"mytable","fullName":"test.mytable"},"operation":"update"}
+    ```
+       
 all done , enjoy !
 
 ## How to run sink
